@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gestión de Productos</title>
+</head>
+<body>
+    <h1>Gestión de Productos</h1>
+
+    <!-- Formulario para agregar un producto -->
+    <form method="POST" action="/admin/products">
+        <input type="text" name="IDProducto" placeholder="ID Producto">
+        <input type="text" name="codebar" placeholder="Código de Barras" required>
+        <input type="text" name="name" placeholder="Nombre del Producto" required>
+        <textarea name="description" placeholder="Descripción"></textarea>
+        <input type="number" name="price" placeholder="Precio" required>
+        <input type="number" name="stock" placeholder="Stock" required>
+        <button type="submit">Agregar Producto</button>
+    </form>
+    
+
+    <!-- Listado de productos -->
+    <h2>Lista de Productos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID Producto</th>
+                <th>Código de Barras</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(product => { %>
+                <tr>
+                    <td><%= product.IDProducto || 'No asignado' %></td>
+                    <td><%= product.codebar %></td>
+                    <td><%= product.name %></td>
+                    <td><%= product.description %></td>
+                    <td>$<%= product.price %></td>
+                    <td><%= product.stock %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    
+</body>
+</html>
